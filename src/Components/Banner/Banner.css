@@ -1,0 +1,71 @@
+.banner{
+    background-size: cover;
+    height: 600px;
+    color: white;
+    margin-top: 50px;
+    position: relative;
+    background-position: center;
+}
+ 
+ 
+.content{
+    position: absolute;
+    bottom: 120px;
+    left:50px;
+}
+ 
+.title{
+    font-size: 4.5rem;
+    font-weight: 800;
+    padding-bottom: 0.3rem;
+}
+ 
+.button{
+    color: white;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    border-radius: 5px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    background-color: rgba(51, 51, 51, .5);
+    cursor: pointer;
+    margin-right: 1rem;
+}
+ 
+.button:hover{
+    color: black;
+    background-color: #e6e6e6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 0 10px rgba(0, 191, 255);
+}
+ 
+.description{
+        line-height: 1.3;
+        padding-top: 1rem;
+        font-size: 1rem;
+        height: 80px;
+}
+ 
+.fade_bottom{
+    height: 600px;
+    background-image: linear-gradient(180deg,transparent,rgba(37,37,37,.61),#111);
+}
+.heading-font-h {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+ .paragraph-font-p {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+  .youtube-container {
+    min-width: 100%;
+    border-radius: 10px;
+    z-index: 10;
+  }
