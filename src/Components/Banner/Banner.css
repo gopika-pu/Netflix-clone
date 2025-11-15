@@ -1,7 +1,7 @@
 .banner{
     background-size: cover;
     height: 600px;
-    color: white;
+    color: #fff;
     margin-top: 50px;
     position: relative;
     background-position: center;
@@ -21,7 +21,7 @@
 }
  
 .button{
-    color: white;
+    color: #fff;
     outline: none;
     border: none;
     font-weight: 700;

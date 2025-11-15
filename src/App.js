@@ -3,6 +3,7 @@ import NavBar from './Components/NavBar/NavBar'
 import './App.css'
 import Banner from './Components/Banner/Banner'
 import RowPost from './Components/RowPost/RowPost'
+import Footer from "./Components/Footer/Footer";
 import { action,horror,originals,comedy } from './urls'
  
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <RowPost url={action} title='Action' isSmall />
         <RowPost url={comedy} title='ComedyMovies'/>
         <RowPost url={horror} title='HorrorMovies'/>
+        <Footer/>
     </div>
   );
 }

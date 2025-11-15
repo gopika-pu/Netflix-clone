@@ -42,17 +42,7 @@
     width: 100%;
 }
  
-.posters {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
-    padding: 10px;
-   
-}
- 
+
 .posters::-webkit-scrollbar {
     display: none; /* Hide scrollbar */
 }
@@ -84,4 +74,26 @@
     margin-right:25px;
     border: 1px solid white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 0 10px #00bfff80;
+}
+
+@keyframes autoScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); 
+  }
+}
+
+.posters.auto-scroll {
+  display: flex;
+  gap: 10px;
+  animation: autoScroll 90s linear infinite;
+  width: max-content;
+  display: flex;
+
+}
+
+.posters.auto-scroll img {
+  flex: 0 0 auto;
 }
