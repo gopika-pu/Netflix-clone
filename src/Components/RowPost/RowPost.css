@@ -10,7 +10,7 @@
     initial-value:0deg;
     inherits: false;
     }
-.row:hover::after, .row:hover::before{
+.row::after, .row::before{
     content: '';
     position:absolute;
     height:100%;
@@ -48,17 +48,17 @@
 }
  
 .poster {
-    max-height: 200px;
+    max-height: 150px;
     margin-right: 10px;
     transition: transform 0.2s;
     cursor: pointer;
     border-radius: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-bottom: 10px;
 }
  
 .SmallPoster {
-    max-height: 200px;
+    max-height: 150px;
     margin-right: 10px;
     transition: transform 0.2s;
     cursor: pointer;
@@ -97,3 +97,10 @@
 .posters.auto-scroll img {
   flex: 0 0 auto;
 }
+@media (max-width: 480px) {
+.poster,.SmallPoster{max-height: 100px;}
+}
+
+.row .row-block{background-color: #050508; border-radius: 10px;}
+.row.content-hidden::after,.row.content-hidden::before{display: none;}
+.row.content-hidden .row-block{display: none;}

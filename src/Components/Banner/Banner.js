@@ -4,7 +4,7 @@ import { API_KEY, imageUrl } from '../../Constants/Constants';
 import axios from '../../axios';
 import YouTube from 'react-youtube';
  
-function Banner() {
+function Banner(props) {
     const [movie, setMovie] = useState(null);
     const [urlId, setUrlId] = useState(null);
  
@@ -38,13 +38,14 @@ function Banner() {
     return (
         <div style={{ backgroundImage: `url(${movie ? imageUrl + movie.backdrop_path : ""})` }} className='relative banner'>
             <div className='content grid grid-cols-12 gap-4 p-4'>
-                <div className='col-span-12 md:col-span-6 lg:col-span-6'>
+                <div className='col-span-12 md:col-span-8 lg:col-span-8'>
                     <h1 className='title heading-font-h'>{movie ? (movie.title || movie.name) : ""}</h1>
                     <div className='banner_buttons'>
                         <button className='button' onClick={() => handlePlay(movie.id)}>Play</button>
                         <button className='button'>My List</button>
                     </div>
                     <p className='description'>{movie ? movie.overview : ""}</p>
+                    <button className="text-white p-2 m-5 mx-0 px-8 transition sign-in" onClick={props.onLoginClick}>sign in</button>
                 </div>
             </div>
             <div className='fade_bottom'></div>

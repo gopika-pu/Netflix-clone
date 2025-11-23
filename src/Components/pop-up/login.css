@@ -1,0 +1,19 @@
+
+.login-btn{
+    background: rgb(229, 9, 20);
+    border-radius: 5px;
+    text-transform: capitalize;
+  }
+  .login-btn:hover{
+    background: rgb(183 3 12);
+  }
+  .close-btn:hover{background-color: rgba(158, 158, 158, .2);}
+  h2{font-family: "Caveat", cursive;}
+
+  @media (min-width: 480px) {
+  .pop-up{min-width: 480px;}
+  }
+
+  @media (max-width: 480px) {
+    .pop-up{width:300px;}
+  }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { imageUrl, API_KEY } from '../../Constants/Constants';
 import axios from '../../axios';
 import './RowPost.css';
@@ -7,7 +7,7 @@ import YouTube from 'react-youtube';
 function RowPost(props) {
     const [movies, setMovies] = useState([]);
     const [UrlId, setUrlId] = useState('');
-    const sliderRef = useRef(null);
+ 
 
     useEffect(() => {
         axios.get(props.url)
@@ -39,23 +39,17 @@ function RowPost(props) {
             .catch(error => console.error('Error fetching video:', error));
     };
 
-    // ✅ Allows only horizontal scrolling inside the slider, but blocks page scrolling while hovering
-    const handleScroll = (event) => {
-        if (sliderRef.current) {
-            sliderRef.current.scrollLeft += event.deltaY * 2; // Scroll horizontally
-        }
-    };
-
+   
 
     return (
-        <div className='row grid grid-cols-10 gap-2 p-1'>
-            <div className='col-span-12 md:col-span-10 lg:col-span-12 p-4' style={{ backgroundColor: '#050508', borderRadius: '10px' }}>
-                <h2 className='paragraph-font-p text-2xl'>{props.title}</h2>
+        <div className={`row p-1 ${ UrlId ? "content-hidden" : "" }`}>
+            <div className='col-span-12 md:col-span-10 lg:col-span-12 p-4 row-block'>
+                <h2 className='paragraph-font-p text-lg'>{props.title}</h2>
 
                 <div
                     className='posters-container'
                 >
-                    <div className='posters auto-scroll' ref={sliderRef} onWheel={handleScroll}>
+                    <div className='posters auto-scroll'>
                         {[...movies, ...movies].map(obj => (
                             <img
                                 key={Math.random()}
@@ -67,10 +61,10 @@ function RowPost(props) {
                         ))}
                     </div>
                 </div>
-
+            </div>
                 {/* YouTube video with close button */}
                 {UrlId && (
-                    <div className="relative mt-4">
+                    <div className="relative w-full">
                         <button
                             onClick={() => setUrlId('')}
                             className="absolute -top-3 -right-3 z-10 bg-black text-white rounded-full px-3 py-1 text-sm hover:bg-red-600 transition"
@@ -80,7 +74,7 @@ function RowPost(props) {
                         <YouTube videoId={UrlId.key} opts={opts} />
                     </div>
                 )}
-            </div>
+            
         </div>
 
     );
