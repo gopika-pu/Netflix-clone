@@ -23,21 +23,26 @@ app.listen(5000, () => {
 let users = []; // Temporary memory (will reset when server restarts)
 
 app.post("/signup", (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
+  console.log("Credentials Received:", req.body);
+  
 
   const userExists = users.find(u => u.email === email);
   if (userExists) {
     return res.status(400).json({ message: "User already exists" });
   }
 
-  users.push({ email, password });
+  users.push({ email, password, name});
 
-  res.json({ message: "Signup success" });
+  res.json({
+    message: "Signup success",
+    access_token: "dummy_token_123"
+  });
 });
-
 
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
+  console.log("Credentials Received:", req.body);
 
   const user = users.find(u => u.email === email);
 
@@ -49,6 +54,9 @@ app.post("/login", (req, res) => {
     return res.status(400).json({ message: "Incorrect password" });
   }
 
-  res.json({ message: "Login success" });
+  res.json({
+    message: "Login success",
+    access_token: "dummy_token_123"
+  });
 });
 
