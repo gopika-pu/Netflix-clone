@@ -26,52 +26,40 @@ const Login = ({ closePopup }) => {
     
 
     const handleSubmit = () => {
+  if (emailError || passwordError) {
+    alert("Fix errors before submitting");
+    return;
+  }
 
-        if (emailError || passwordError) {
-          alert("Fix errors before submitting");
-        return;
-        } 
+  const payload = {
+    email,
+    password,
+    ...(isSignup && { name })
+  };
 
-        const payload = {
-            email: email,
-            password: password,
-            ...(isSignup && {name})
-        }
+  console.log("Sending credentials:", payload);
 
-        console.log("Sending credentials:", payload);
+  const url = isSignup
+    ? "http://localhost:5000/signup"
+    : "http://localhost:5000/login";
 
-        const url = isSignup 
-            ? "http://localhost:5000/signup"
-            : "http://localhost:5000/login";
-
-        axios.post(url, payload)
-            .then(res => {
-               
-                    localStorage.setItem("token", JSON.stringify(res.data.access_token));
-                
-                
-                console.log(isSignup ? "Signup Successful" : "Login Successful" , res)
-            })
-            .catch(err => {
-                alert(isSignup ? "Signup Failed" : "Login Failed");
-                console.log(err);
-            });
-
-            if(isSignup){
-                setIsSignup(false);
-                 alert("Signup Successful");
-            }
-
-            if(!isSignup){
-                axios.post("http://localhost:5000/login", payload)
-                .then((res) => {
-                localStorage.setItem("user", JSON.stringify({ email }));
-                alert("Login Success");
-                });
-                closePopup();
-
-            }
-    }
+  axios.post(url, payload)
+    .then((res) => {
+      if (!isSignup) {
+        localStorage.setItem("token", JSON.stringify(res.data.access_token));
+        localStorage.setItem("user", JSON.stringify({ email }));
+        alert("Login Success");
+        closePopup();
+      } else {
+        alert("Signup Successful");
+        setIsSignup(false);
+      }
+    })
+    .catch((err) => {
+      alert(isSignup ? "Signup Failed" : "Login Failed");
+      console.log(err);
+    });
+};
 
 
     
